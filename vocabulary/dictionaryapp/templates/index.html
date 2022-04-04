@@ -2,14 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Words</title>
+    <title>Словарь</title>
+    <style>
+dt {
+    font-weight: bold;
+    font-size: 1.6em;
+    color: green;
+  }
+</style>
 </head>
 <body>
 <h1>Словарь</h1>
-<ul>
-    {% for el in all_words %}
-        <li>{{ el }}</li>
+
+<dl>
+    {% for word, examples in word_with_examples %}
+    <dt>{{ word }}</dt>
+        {% for el in examples %}
+        <dd>
+            <ul>
+                <li>{{ el}}</li>
+            </ul>
+        </dd>
+        {% endfor %}
     {% endfor %}
-</ul>
+</dl>
+
 </body>
 </html>

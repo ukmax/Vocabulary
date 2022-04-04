@@ -8,3 +8,12 @@ class Word(models.Model):
 
     def __str__(self):
         return f'{self.eng_word} - {self.rus_word}'
+
+
+class Example(models.Model):
+    word = models.ForeignKey(Word, on_delete=models.CASCADE)
+    eng_example = models.CharField(max_length=256)
+    rus_example = models.CharField(max_length=256)
+
+    def __str__(self):
+        return f'{self.eng_example} - {self.rus_example}'
