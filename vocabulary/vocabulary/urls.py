@@ -21,6 +21,7 @@ import dictionaryapp.views as dictionaryapp
 urlpatterns = [
     path('', dictionaryapp.index, name='main'),
     path('admin/', admin.site.urls),
-    path('word/detail/<int:pk>/', dictionaryapp.word_detail, name='word_detail'),
+    # path('word/detail/<int:pk>/', dictionaryapp.word_detail, name='word_detail'),
+    path('word/detail/<int:pk>/', dictionaryapp.WordDetailView.as_view(), name='word_detail'),
 
 ]
