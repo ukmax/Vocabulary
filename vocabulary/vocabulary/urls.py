@@ -19,7 +19,8 @@ from django.urls import path
 import dictionaryapp.views as dictionaryapp
 
 urlpatterns = [
-    path('', dictionaryapp.index),
+    path('', dictionaryapp.index, name='main'),
     path('admin/', admin.site.urls),
+    path('word/detail/<int:pk>/', dictionaryapp.word_detail, name='word_detail'),
 
 ]

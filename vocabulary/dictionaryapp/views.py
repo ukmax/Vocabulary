@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Word, Example
 
 
@@ -12,4 +12,10 @@ def index(request):
 
     context = {'word_with_examples': word_with_examples}
     return render(request, 'index.html', context=context)
+
+
+def word_detail(request, pk):
+    word_info = get_object_or_404(Word, pk=pk)
+    context = {'word': word_info}
+    return render(request, 'word.html', context=context)
 

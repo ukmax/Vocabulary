@@ -16,7 +16,7 @@ dt {
 
 <dl>
     {% for word, examples in word_with_examples %}
-    <dt>{{ word }}</dt>
+    <dt> <a href="{% url 'word_detail' pk=word.pk %}">{{ word }}</a></dt>
         {% for el in examples %}
         <dd>
             <ul>
