@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        p {
+            font-weight: bold;
+            font-size: 1.6em;
+            color: green;
+          }
+    </style>
     <title>Примеры</title>
 </head>
 <body>
-<h1>Детали слова</h1>
-<a href="{% url 'main'%}">Главная страница</a>
+<h1>Примеры</h1>
+<a href="{% url 'main'%}">< на главную</a>
 <p>
     {{ word }}
 </p>
