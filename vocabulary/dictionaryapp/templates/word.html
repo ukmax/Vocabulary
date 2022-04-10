@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Детали</title>
+    <title>Примеры</title>
 </head>
 <body>
 <h1>Детали слова</h1>
@@ -10,7 +10,10 @@
 <p>
     {{ word }}
 </p>
-
-
+    {% for el in examples %}
+        <ul>
+            <li>{{ el}}</li>
+        </ul>
+    {% endfor %}
 </body>
 </html>

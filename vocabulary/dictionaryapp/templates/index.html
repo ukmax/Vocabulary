@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Словарь</title>
     <style>
-dt {
+ul {
     font-weight: bold;
     font-size: 1.6em;
     color: green;
@@ -15,15 +15,10 @@ dt {
 <h1>Словарь</h1>
 
 <dl>
-    {% for word, examples in word_with_examples %}
-    <dt> <a href="{% url 'word_detail' pk=word.pk %}">{{ word }}</a></dt>
-        {% for el in examples %}
-        <dd>
-            <ul>
-                <li>{{ el}}</li>
-            </ul>
-        </dd>
-        {% endfor %}
+    {% for word in all_words %}
+        <ul>
+            <li><a href="{% url 'word_detail' pk=word.pk %}">{{ word }}</a></li>
+        </ul>
     {% endfor %}
 </dl>
 
