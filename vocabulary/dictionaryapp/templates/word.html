@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <style>
-        p {
-            font-weight: bold;
-            font-size: 1.6em;
-            color: green;
-          }
-    </style>
-    <title>Примеры</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    Примеры
+</title>
+{% endblock %}
+
+{% block body %}
 <h1>Примеры</h1>
 <a href="{% url 'main'%}">< на главную</a>
+<p>
+    <form action="{% url 'word_update' object.pk %}">
+        <input type="submit" value="Редактировать слово" />
+    </form>
+</p>
+
 <p>
     {{ word }}
 </p>
@@ -22,5 +23,4 @@
             <li>{{ el}}</li>
         </ul>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

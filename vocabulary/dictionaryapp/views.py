@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, ListView, CreateView, UpdateView
 
 from .models import Word, Example
 
@@ -28,3 +29,23 @@ class WordDetailView(DetailView):
         examples = list(Example.objects.filter(word__eng_word=self.object.eng_word).only("eng_example", "rus_example"))
         context['examples'] = examples
         return context
+
+
+class WordListView(ListView):
+    model = Word
+    context_object_name = 'all_words'
+    template_name = 'index.html'
+
+
+class WordCreateView(CreateView):
+    model = Word
+    template_name = 'word_create.html'
+    success_url = reverse_lazy('main')
+    fields = '__all__'
+
+
+class WordUpdateView(UpdateView):
+    model = Word
+    template_name = 'word_create.html'
+    success_url = reverse_lazy('main')
+    fields = '__all__'

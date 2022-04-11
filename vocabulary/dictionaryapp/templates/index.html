@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Словарь</title>
-    <style>
-        ul {
-            font-weight: bold;
-            font-size: 1.6em;
-            color: green;
-          }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    Словарь
+</title>
+{% endblock %}
+
+{% block body %}
 <h1>Словарь</h1>
-
-<dl>
-    {% for word in all_words %}
-        <ul>
-            <li><a href="{% url 'word_detail' pk=word.pk %}">{{ word }}</a></li>
-        </ul>
-    {% endfor %}
-</dl>
-
-</body>
-</html>
+<p>
+    <form action="{% url 'word_create' %}">
+        <input type="submit" value="Новое слово" />
+    </form>
+</p>
+{% for word in all_words %}
+    <ul>
+        <li><a href="{% url 'word_detail' pk=word.pk %}">{{ word }}</a></li>
+    </ul>
+{% endfor %}
+{% endblock %}
