@@ -49,3 +49,17 @@ class WordUpdateView(UpdateView):
     template_name = 'word_create.html'
     success_url = reverse_lazy('main')
     fields = '__all__'
+
+
+def topwords(request):
+    all_words = list(Word.objects.all())
+    context = {'all_words': all_words}
+    return render(request, 'topwords.html', context=context)
+
+def checkwords(request):
+    all_words = list(Word.objects.all())
+    context = {'all_words': all_words}
+    return render(request, 'checkwords.html', context=context)
+
+def about (request):
+    return render(request, 'about.html')

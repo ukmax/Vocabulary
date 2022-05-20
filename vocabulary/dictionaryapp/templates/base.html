@@ -2,18 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {% block title %}
-    {% endblock %}
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- word list style-->
     <style>
-        p {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: green;
-          }
+    .list-group {
+    max-width: 300px;
+    margin: 2rem auto;
+    }
     </style>
+
+    <!-- background color style-->
+    <style>
+    body {
+        background-color: #BFD9D6;
+        }
+    </style>
+    {% block head %}
+    {% endblock %}
+
+
+
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Vocabulary</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'main' %}">My word list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'topwords' %}">Top words</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'checkwords' %}">Test yourself</a>
+        </li>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% block body %}
 {% endblock %}
+
 </body>
 </html>
+
+

@@ -2,30 +2,22 @@
 
 {% block head %}
 <title>
-    My word list
+    Top words
 </title>
 {% endblock %}
 
 {% block body %}
 
 
-
-
-                <div class="list-group  d-grid gap-2 border-0 w-auto">
-                    <p>
-                    <form action="{% url 'word_create' %}">
-                        <input type="submit" value="Новое слово" />
-                    </form>
-                    </p>
+<div class="list-group  d-grid gap-2 border-0 w-auto">
                     {% for word in all_words %}
                     <label class="list-group-item rounded-3 py-3">
 
                     <a href="{% url 'word_detail' pk=word.pk %}">{{ word.eng_word }}</a>
-                    <span class="d-block small opacity-60"> {{word.rus_word}} </span>
+                    <span class="d-block small opacity-50"> {{word.rus_word}} </span>
                     </label>
                     {% endfor %}
                 </div>
-
 
 {% endblock %}
 
