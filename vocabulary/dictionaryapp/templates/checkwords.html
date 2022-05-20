@@ -52,13 +52,50 @@
           transform: rotateY(180deg);
         }
     </style>
+
+  <style>
+  table {
+    margin-left:auto;
+    margin-right:auto;
+    width: 50%;
+
+  }
+  td {
+    width: 20;
+    position: relative;
+  }
+<!--  td:after {-->
+<!--  content: '';-->
+<!--  display: block;-->
+<!--  margin-top: 100%;-->
+<!--  }-->
+<!--  td .content {-->
+<!--  position: absolute;-->
+<!--  top: 0;-->
+<!--  bottom: 0;-->
+<!--  left: 0;-->
+<!--  right: 0;-->
+<!--  background: gold;-->
+}
+  </style>
 {% endblock %}
 
 {% block body %}
 
-
-<h2>Card Demo</h2>
-<div class="flip-card">
+<table>
+  <tbody>
+    <tr>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      ABC
+    </div>
+    <div class="flip-card-back">
+      АБЦ
+    </div>
+  </div>
+</div></td>
+      <td><div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
       КОТ
@@ -67,8 +104,75 @@
       Cat
     </div>
   </div>
-</div>
-
+</div></td>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+    </tr>
+    <tr>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+    </tr>
+    <tr>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+      <td><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      КОТ
+    </div>
+    <div class="flip-card-back">
+      Cat
+    </div>
+  </div>
+</div></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 {% endblock %}
 
 
