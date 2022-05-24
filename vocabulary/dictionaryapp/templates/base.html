@@ -46,9 +46,33 @@
           <li class="nav-item">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'myauth:register' %}">Register</a>
+        </li>
       </ul>
     </div>
   </div>
+    <span class="navbar-text" style="margin-right: 5%">
+        {{ user }}
+    </span>
+
+    <span class="navbar-text" style="margin-right: 3%">
+        {% if user.is_anonymous %}
+
+        <form action="{% url 'myauth:login' %}" >
+            <input type="submit" value="Sign In" />
+        </form>
+
+        {% else %}
+        <form action="{% url 'myauth:logout' %}" >
+            <input type="submit" value="Logout" />
+        </form>
+
+        {% endif %}
+
+
+    </span>
+
 </nav>
 {% block body %}
 {% endblock %}

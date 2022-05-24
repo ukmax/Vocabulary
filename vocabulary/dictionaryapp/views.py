@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 
 from .models import Word, Example
 
@@ -37,7 +39,7 @@ class WordListView(ListView):
     template_name = 'index.html'
 
 
-class WordCreateView(CreateView):
+class WordCreateView(LoginRequiredMixin, CreateView):
     model = Word
     template_name = 'word_create.html'
     success_url = reverse_lazy('main')
