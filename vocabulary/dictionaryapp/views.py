@@ -8,8 +8,8 @@ from .models import Word, Example
 
 
 def index(request):
-    all_words = list(Word.objects.all())
-    context = {'all_words': all_words}
+    all_user_words = list(Word.objects.filter(user__id=request.user.id))
+    context = {'all_words': all_user_words}
     return render(request, 'index.html', context=context)
 
 
@@ -33,10 +33,10 @@ class WordDetailView(DetailView):
         return context
 
 
-class WordListView(ListView):
-    model = Word
-    context_object_name = 'all_words'
-    template_name = 'index.html'
+# class WordListView(ListView):
+#     model = Word
+#     context_object_name = 'all_words'
+#     template_name = 'index.html'
 
 
 class WordCreateView(LoginRequiredMixin, CreateView):
