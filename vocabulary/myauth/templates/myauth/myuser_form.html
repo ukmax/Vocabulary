@@ -3,14 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>User</title>
+    <style>
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 300px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+.form input {
+    outline: 0;
+    background: #BFD9D6;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #365359;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+
+.form button:hover,.form button:active,.form button:focus {
+    background: #3d3d3d;
+  }
+
+body {
+    background-color: #BFD9D6;;
+    font-family: "Helvetica";
+  }
+    </style>
 </head>
 <body>
-<div class="user-creation-form">
-    <form method="post">
+
+<h1 align="center" >Vocabulary</h1>
+<div class="register-page">
+
+    <div class="form">
+      <form class="register-form" method="POST" action="">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="save">
-    </form>
-</div>
+        <h2 class="register-title">REGISTER</h2>
+        <h4>{{form.username.label}}</h4>
+        {{form.username}}
+        <h4>{{form.email.label}}</h4>
+        {{form.email}}
+        <h4>{{form.password1.label}}</h4>
+        {{form.password1}}
+        <h4>{{form.password2.label}}</h4>
+        {{form.password2}}
+        <button type="submit"> Create </button>
+        <p class="message">Already registered? <a href="{% url 'myauth:login' %}">Log In</a></p>
+        </form>
+        {{ form.errors }}
+    </div>
+
+  </div>
 </body>
 </html>
