@@ -11,6 +11,7 @@ from .models import Word, Example
 def index(request):
     all_user_words = list(Word.objects.filter(user__id=request.user.id))
     context = {'all_words': all_user_words}
+    print(request.user.username)
     return render(request, 'index.html', context=context)
 
 
@@ -41,30 +42,45 @@ class WordDetailView(DetailView):
 
 
 class WordCreateView(LoginRequiredMixin, CreateView):
+
     model = Word
     template_name = 'word_create.html'
     success_url = reverse_lazy('main')
     fields = '__all__'
+    # fields = ['eng_word', 'rus_word', 'note']
+    # для подстановки user в форму
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class WordUpdateView(UpdateView):
     model = Word
     template_name = 'word_create.html'
     success_url = reverse_lazy('main')
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ['eng_word', 'rus_word', 'note']
 
+    # # для подстановки user в форму
+    # def form_valid(self, form):
+    #     form.instance.created_by = self.request.user
+    #     return super().form_valid(form)
 
 def topwords(request):
-    all_words = list( Word.objects.raw('SELECT *, COUNT(*) as CNT FROM dictionaryapp_word GROUP BY eng_word ORDER by CNT DESC  LIMIT 20'))
+    all_words = list(Word.objects.raw('SELECT *, COUNT(*) as CNT FROM dictionaryapp_word GROUP BY eng_word ORDER by CNT DESC  LIMIT 20'))
     context = {'all_words': all_words}
     return render(request, 'topwords.html', context=context)
 
+
 def checkwords(request):
-    all_words = list(Word.objects.filter(user__id=request.user.id))
+    all_words = list(Word.objects.filter(user__id=request.user.id).order_by('?'))
+    # формируем построчно таблицу для вывода
     first_row = all_words[0:4]
     second_row = all_words[5:9]
     third_row = all_words[9:13]
-    context = {'first_row': first_row, 'second_row': second_row, 'third_row': third_row}
+    words_table = [first_row, second_row, third_row]
+    context = {'words_table': words_table}
     return render(request, 'checkwords.html', context=context)
 
 def about (request):

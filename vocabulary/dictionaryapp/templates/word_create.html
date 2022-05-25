@@ -7,13 +7,66 @@
 {% endblock %}
 
 {% block body %}
-<a href="{% url 'main'%}">< на главную</a>
-<form method="post">
-    {% csrf_token %}
-<!--рендерим как тег p-->
-    {{ form.as_p }}
+  <style>
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 500px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
 
-    <input type="submit" value="Готово">
-</form>
+.form input {
+    outline: 0;
+    background: #BFD9D6;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+.form button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #365359;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+
+.form button:hover,.form button:active,.form button:focus {
+    background: #3d3d3d;
+  }
+
+body {
+    background-color: #BFD9D6;;
+    font-family: "Helvetica";
+  }
+    </style>
+<div>
+    <div class="form">
+      <form class="register-form" method="POST" action="">
+        {% csrf_token %}
+        <h4>User</h4>
+        {{form.user}}
+        {{form.eng_word}}
+        {{form.rus_word}}
+        {{form.note}}
+        <button type="submit">Save</button>
+        </form>
+        {{ form.errors }}
+    </div>
+
+  </div>
 
 {% endblock %}

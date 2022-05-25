@@ -18,9 +18,13 @@
 <p>
     {{ word }}
 </p>
-    {% for el in examples %}
-        <ul>
-            <li>{{ el}}</li>
-        </ul>
+
+<div class="list-group  d-grid gap-2 border-0 w-auto">
+    {% for example in examples %}
+    <label class="list-group-item rounded-3 py-3">
+        <span class="d-block small"> <h5>{{ example.eng_example }} </h5></span>
+        <span class="d-block small opacity-60"> {{example.rus_example}} </span>
+    </label>
     {% endfor %}
+</div>
 {% endblock %}
