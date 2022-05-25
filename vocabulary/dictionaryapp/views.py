@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
@@ -13,11 +14,11 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-def word_detail(request, pk):
-    word = get_object_or_404(Word, pk=pk)
-    examples = list(Example.objects.filter(word__eng_word=word.eng_word).only("eng_example", "rus_example"))
-    context = {'word': word, 'examples': examples}
-    return render(request, 'word.html', context=context)
+# def word_detail(request, pk):
+#     word = get_object_or_404(Word, pk=pk)
+#     examples = list(Example.objects.filter(word__eng_word=word.eng_word).only("eng_example", "rus_example"))
+#     context = {'word': word, 'examples': examples}
+#     return render(request, 'word.html', context=context)
 
 
 class WordDetailView(DetailView):
@@ -54,13 +55,16 @@ class WordUpdateView(UpdateView):
 
 
 def topwords(request):
-    all_words = list(Word.objects.all())
+    all_words = list( Word.objects.raw('SELECT *, COUNT(*) as CNT FROM dictionaryapp_word GROUP BY eng_word ORDER by CNT DESC  LIMIT 20'))
     context = {'all_words': all_words}
     return render(request, 'topwords.html', context=context)
 
 def checkwords(request):
-    all_words = list(Word.objects.all())
-    context = {'all_words': all_words}
+    all_words = list(Word.objects.filter(user__id=request.user.id))
+    first_row = all_words[0:4]
+    second_row = all_words[5:9]
+    third_row = all_words[9:13]
+    context = {'first_row': first_row, 'second_row': second_row, 'third_row': third_row}
     return render(request, 'checkwords.html', context=context)
 
 def about (request):

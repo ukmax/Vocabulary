@@ -10,7 +10,8 @@ class Word(models.Model):
     note = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.eng_word} - {self.rus_word}'
+        # return f'{self.eng_word} - {self.rus_word}'
+        return f'{self.eng_word}'
 
 
 class Example(models.Model):

@@ -85,91 +85,52 @@
 <table>
   <tbody>
     <tr>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      ABC
-    </div>
-    <div class="flip-card-back">
-      АБЦ
-    </div>
-  </div>
-</div></td>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
+      {% for word in first_row %}
+      <td>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              {{word.eng_word}}
+            </div>
+            <div class="flip-card-back">
+            {{word.rus_word}}
+            </div>
+          </div>
+        </div>
+      </td>
+      {% endfor %}
     </tr>
     <tr>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
+      {% for word in second_row %}
+      <td>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              {{word.eng_word}}
+            </div>
+            <div class="flip-card-back">
+            {{word.rus_word}}
+            </div>
+          </div>
+        </div>
+      </td>
+      {% endfor %}
     </tr>
     <tr>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
-      <td><div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      КОТ
-    </div>
-    <div class="flip-card-back">
-      Cat
-    </div>
-  </div>
-</div></td>
-      <td></td>
+      {% for word in third_row %}
+      <td>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              {{word.eng_word}}
+            </div>
+            <div class="flip-card-back">
+            {{word.rus_word}}
+            </div>
+          </div>
+        </div>
+      </td>
+      {% endfor %}
     </tr>
   </tbody>
 </table>
