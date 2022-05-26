@@ -5,22 +5,15 @@
     My word list
 </title>
 
-<!--button style-->
-<style>
-.button_container{
-text-align: center;
-padding: 20px;
-}
-</style>
 {% endblock %}
 
 {% block body %}
 
-<div class="button_container">
-    <form action="{% url 'word_create' %}">
-        <input type="submit" value="New word" />
-    </form>
+
+<div style="text-align: center; padding: 20px;">
+    <a class="btn btn-primary" href="{% url 'word_create' %}">Add word</a>
 </div>
+
 
 <div class="list-group  d-grid gap-2 border-0 w-auto">
     {% for word in all_words %}

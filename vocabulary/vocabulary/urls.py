@@ -31,5 +31,6 @@ urlpatterns = [
     path('word/detail/<int:pk>/', dictionaryapp.WordDetailView.as_view(), name='word_detail'),
     path('word/create/', dictionaryapp.WordCreateView.as_view(), name='word_create'),
     path('word/update/<int:pk>/', dictionaryapp.WordUpdateView.as_view(), name='word_update'),
+    path('word/delete/<int:pk>/', dictionaryapp.delete_word, name='delete_word'),
 
 ]

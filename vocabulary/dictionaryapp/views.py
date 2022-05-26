@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
@@ -85,3 +85,8 @@ def checkwords(request):
 
 def about (request):
     return render(request, 'about.html')
+
+
+def delete_word(request, pk):
+    Word.objects.filter(pk=pk).delete()
+    return redirect('main')

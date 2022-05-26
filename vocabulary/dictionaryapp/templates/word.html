@@ -2,23 +2,21 @@
 
 {% block title %}
 <title>
-    Примеры
+    Examples
 </title>
 {% endblock %}
 
 {% block body %}
-<h1>Примеры</h1>
-<a href="{% url 'main'%}">< на главную</a>
-<p>
-    <form action="{% url 'word_update' object.pk %}">
-        <input type="submit" value="Редактировать слово" />
-    </form>
-</p>
 
-<p>
-    {{ word }}
-</p>
-
+<div style="text-align: center;padding: 20px;">
+    <a class="btn btn-primary" href="{% url 'word_update' object.pk %}">Edit word</a>
+    <a class="btn btn-primary" href="{% url 'delete_word' object.pk %}">Delete word</a>
+     <a class="btn btn-primary" href="">Add example</a>
+</div>
+    <h3 style="text-align: center; padding: 20px;">
+        {{ word.eng_word }} - {{ word.rus_word }}
+    </h3>
+<h4 style="text-align: center;">examples:</h4>
 <div class="list-group  d-grid gap-2 border-0 w-auto">
     {% for example in examples %}
     <label class="list-group-item rounded-3 py-3">

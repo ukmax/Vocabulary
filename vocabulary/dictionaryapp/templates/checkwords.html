@@ -18,7 +18,7 @@
         }
 
         .flip-card-inner {
-<!--          position: relative;-->
+          position: relative;
           width: 100%;
           height: 100%;
           text-align: center;
@@ -64,99 +64,20 @@
   td {
     width: 20;
     position: relative;
+    padding: 15px;
   }
-<!--  td:after {-->
-<!--  content: '';-->
-<!--  display: block;-->
-<!--  margin-top: 100%;-->
-<!--  }-->
-<!--  td .content {-->
-<!--  position: absolute;-->
-<!--  top: 0;-->
-<!--  bottom: 0;-->
-<!--  left: 0;-->
-<!--  right: 0;-->
-<!--  background: gold;-->
-}
   </style>
-
-<!--button style-->
-<style>
-.button_container{
-text-align: center;
-padding: 20px;
-}
-</style>
 
 {% endblock %}
 
 {% block body %}
 
-<!--<table>-->
-<!--  <tbody>-->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--    <tr>-->
-<!--      {% for word in first_row %}-->
-<!--      <td>-->
-<!--        <div class="flip-card">-->
-<!--          <div class="flip-card-inner">-->
-<!--            <div class="flip-card-front">-->
-<!--              {{word.eng_word}}-->
-<!--            </div>-->
-<!--            <div class="flip-card-back">-->
-<!--            {{word.rus_word}}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </td>-->
-<!--      {% endfor %}-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      {% for word in second_row %}-->
-<!--      <td>-->
-<!--        <div class="flip-card">-->
-<!--          <div class="flip-card-inner">-->
-<!--            <div class="flip-card-front">-->
-<!--              {{word.eng_word}}-->
-<!--            </div>-->
-<!--            <div class="flip-card-back">-->
-<!--            {{word.rus_word}}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </td>-->
-<!--      {% endfor %}-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      {% for word in third_row %}-->
-<!--      <td>-->
-<!--        <div class="flip-card">-->
-<!--          <div class="flip-card-inner">-->
-<!--            <div class="flip-card-front">-->
-<!--              {{word.eng_word}}-->
-<!--            </div>-->
-<!--            <div class="flip-card-back">-->
-<!--            {{word.rus_word}}-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </td>-->
-<!--      {% endfor %}-->
-<!--    </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-<div class="button_container">
-                    <form action="{% url 'checkwords' %}">
-                        <input type="submit" value="Shuffle words" />
-                    </form>
+<div style="text-align: center; padding: 20px;">
+    <a class="btn btn-primary" href="{% url 'checkwords' %}">Shuffle words</a>
 </div>
 
 <table>
   <tbody>
-
   {% for word_row in words_table %}
     <tr>
       {% for word in word_row %}

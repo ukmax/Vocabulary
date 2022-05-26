@@ -2,7 +2,7 @@
 
 {% block title %}
 <title>
-    Новое слово
+    Add word
 </title>
 {% endblock %}
 
@@ -53,7 +53,8 @@ body {
     font-family: "Helvetica";
   }
     </style>
-<div>
+
+<div class="container">
     <div class="form">
       <form class="register-form" method="POST" action="">
         {% csrf_token %}
