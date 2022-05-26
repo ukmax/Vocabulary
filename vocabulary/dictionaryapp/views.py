@@ -42,17 +42,10 @@ class WordDetailView(DetailView):
 
 
 class WordCreateView(LoginRequiredMixin, CreateView):
-
     model = Word
     template_name = 'word_create.html'
     success_url = reverse_lazy('main')
     fields = '__all__'
-    # fields = ['eng_word', 'rus_word', 'note']
-    # для подстановки user в форму
-
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
 
 
 class WordUpdateView(UpdateView):
@@ -66,6 +59,13 @@ class WordUpdateView(UpdateView):
     # def form_valid(self, form):
     #     form.instance.created_by = self.request.user
     #     return super().form_valid(form)
+
+
+class ExampleCreateView(LoginRequiredMixin, CreateView):
+    model = Example
+    template_name = 'example_create.html'
+    success_url = reverse_lazy('main')
+    fields = '__all__'
 
 def topwords(request):
     all_words = list(Word.objects.raw('SELECT *, COUNT(*) as CNT FROM dictionaryapp_word GROUP BY eng_word ORDER by CNT DESC  LIMIT 20'))
