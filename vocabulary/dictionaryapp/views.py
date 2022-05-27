@@ -90,3 +90,10 @@ def about (request):
 def delete_word(request, pk):
     Word.objects.filter(pk=pk).delete()
     return redirect('main')
+
+
+def copy_word(request, eng, rus):
+    w = Word(eng_word=eng, rus_word=rus, user_id=request.user.id)
+    w.save()
+    return redirect('main')
+

@@ -33,5 +33,7 @@ urlpatterns = [
     path('word/update/<int:pk>/', dictionaryapp.WordUpdateView.as_view(), name='word_update'),
     path('example/create/', dictionaryapp.ExampleCreateView.as_view(), name='example_create'),
     path('word/delete/<int:pk>/', dictionaryapp.delete_word, name='delete_word'),
+    path('word/copy/<str:eng>/<str:rus>/', dictionaryapp.copy_word, name='copy_word'),
+
 
 ]

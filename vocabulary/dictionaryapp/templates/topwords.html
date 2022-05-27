@@ -13,9 +13,9 @@
 <div class="list-group  d-grid gap-2 border-0 w-auto" >
                     {% for word in all_words %}
                     <label class="list-group-item rounded-3 py-3">
-
                     <span class="d-block small"> <h6>{{word.eng_word}} </h6></span>
-                    <span class="d-block small opacity-50"> {{word.rus_word}} </span>
+                    <div class="d-inline  small opacity-50">{{word.rus_word}}</div>
+                    <span style="float:right"><a  href="{% url 'copy_word' word.eng_word word.rus_word %}">save</a></span>
                     </label>
                     {% endfor %}
                 </div>
