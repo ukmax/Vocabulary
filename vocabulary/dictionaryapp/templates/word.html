@@ -16,7 +16,11 @@
     <h3 style="text-align: center; padding: 20px;">
         {{ word.eng_word }} - {{ word.rus_word }}
     </h3>
+
+{% if examples %}
 <h5 style="text-align: center;">examples:</h5>
+{% endif %}
+
 <div class="list-group  d-grid gap-2 border-0 w-auto">
     {% for example in examples %}
     <label class="list-group-item rounded-3 py-3">
@@ -25,4 +29,9 @@
     </label>
     {% endfor %}
 </div>
+
+
+
+
+
 {% endblock %}
