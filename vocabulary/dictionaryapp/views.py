@@ -1,9 +1,7 @@
-from django.contrib.auth.decorators import login_required
-from django.db.models import Count
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView, CreateView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
+from django.views.generic import DetailView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Word, Example
 
@@ -13,13 +11,6 @@ def index(request):
     context = {'all_words': all_user_words}
     print(request.user.username)
     return render(request, 'index.html', context=context)
-
-
-# def word_detail(request, pk):
-#     word = get_object_or_404(Word, pk=pk)
-#     examples = list(Example.objects.filter(word__eng_word=word.eng_word).only("eng_example", "rus_example"))
-#     context = {'word': word, 'examples': examples}
-#     return render(request, 'word.html', context=context)
 
 
 class WordDetailView(DetailView):
@@ -33,12 +24,6 @@ class WordDetailView(DetailView):
         examples = list(Example.objects.filter(word__eng_word=self.object.eng_word).only("eng_example", "rus_example"))
         context['examples'] = examples
         return context
-
-
-# class WordListView(ListView):
-#     model = Word
-#     context_object_name = 'all_words'
-#     template_name = 'index.html'
 
 
 class WordCreateView(LoginRequiredMixin, CreateView):
@@ -55,7 +40,7 @@ class WordUpdateView(UpdateView):
     # fields = '__all__'
     fields = ['eng_word', 'rus_word', 'note']
 
-    # # для подстановки user в форму
+    # для подстановки user в форму
     # def form_valid(self, form):
     #     form.instance.created_by = self.request.user
     #     return super().form_valid(form)
@@ -82,6 +67,7 @@ def checkwords(request):
     words_table = [first_row, second_row, third_row]
     context = {'words_table': words_table}
     return render(request, 'checkwords.html', context=context)
+
 
 def about (request):
     return render(request, 'about.html')
